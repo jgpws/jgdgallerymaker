@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-17880512-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-17880512-1');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jgdGalleryMaker - Make photo galleries online for free</title>
+  <link rel="shortcut icon" href="../favicon-32.png" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ca4bbd9bf7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- version 1.1 -->
+
+  <div class="wrapper">
+
+    <header id="header" class="header">
+      <div id="logo"><img src="images/jgm-logo-large.png" alt="jgdGalleryMaker logo">
+        <h1 id="title" class="screen-reader">jgdGalleryMaker</h1>
+      </div>
+      <div class="header__panel">
+        <div class="icon-panel">
+          <ul class="social-icons">
+            <li class="social-icons__icon">
+              <a class="social-icons__anchor" href="https://jasong-designs.com" target="_blank" title="Blog- Jason G. Designs"><i class="fab fa-wordpress"></i><span class="hide">Blog</span></a></li>
+            <li class="social-icons__icon">
+              <a class="social-icons__anchor" href="https://github.com/jgpws/" target="_blank" title="GitHub"><i class="fab fa-github"></i><span class="hide">GitHub</span></a></li>
+            <li class="social-icons__icon">
+              <a class="social-icons__anchor" href="https://www.linkedin.com/in/jason-gonzalez-a420b515/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i><span class="hide">LinkedIn</span></a></li>
+          </ul>
+          <div class="donation-icon">
+            <form action="https://www.paypal.com/donate" method="post" target="_top">
+              <input type="hidden" name="hosted_button_id" value="6QAJUPWTK99L8" />
+              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+              <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+            </form>
+          </div>
+        </div>
+        <div class="alt-panel">
+          <button class="btn instructions-btn"><i class="fas fa-question"></i>How to use</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="form-controls">
+      <div class="form-row form-row--goto">
+        <a class="btn go-to-gallery" href="#gallery-container"><i class="fas fa-th"></i>Go to the gallery</a>
+      </div>
+      <div class="form-row">
+        <div id="img-url-error"></div>
+        <i class="fas fa-link"></i><label for="image_url">Image URL: </label>
+        <input type="url" id="image_url" name="image_url" class="img-input" placeholder="Enter a URL for your gallery image">
+      </div>
+      <div class="form-row">
+        <div id="alt-text-error" class="warning"></div>
+        <i class="fas fa-closed-captioning"></i><label for="alt_text">Image Alt text: </label>
+        <input type="text" id="alt_text" name="alt_text" class="alt-input" placeholder="Add alt text for your image">
+      </div>
+      <div class="form-row">
+        <button type="submit" class="btn img-submit-btn"><i class="fas fa-image"></i>Add an image to the gallery</button>
+      </div>
+      <hr>
+      <div class="form-row form-row--select">
+        <label for="gallery-padding">Gallery padding:</label>
+        <select name="gallery-padding" autocomplete="off" id="gallery-padding">
+          <option value="pad-24" selected>24 pixels</option>
+          <option value="pad-48">48 pixels</option>
+          <option value="pad-72">72 pixels</option>
+          <option value="pad-96">96 pixels</option>
+        </select><i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="form-row form-row--select">
+        <label for="image-size">Image maximum size:</label>
+        <select name="image-size" autocomplete="off" id="image-size">
+          <option value="px-240">240 x 240 pixels</option>
+          <option value="px-320" selected>320 x 320 pixels</option>
+          <option value="px-560">560 x 560 pixels</option>
+          <option value="px-640">640 x 640 pixels</options>
+        </select><i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="form-row form-row--select">
+        <label for="grid-gaps">Gap size between images:</label>
+        <select name="grid-gaps" autocomplete="off" id="grid-gaps">
+          <option value="zero">No Gaps</option>
+          <option value="px-8">8 pixels</option>
+          <option value="px-16" selectedHTML>16 pixels</option>
+          <option value="px-24">24 pixels</option>
+          <option value="px-32">32 pixels</option>
+        </select><i class="fas fa-chevron-down"></i>
+      </div>
+      <hr>
+      <div class="form-row form-row--select">
+        <label for="gallery-mode">Select Editing Mode:</label>
+        <select name="mode" autocomplete="off" id="gallery-mode">
+          <option value="view" selected>View Gallery</option>
+          <option value="edit">Edit Gallery</option>
+        </select><i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="form-row">
+        <button type="submit" class="btn clear-btn"><i class="fas fa-trash"></i>Remove gallery</button>
+      </div>
+    </div>
+
+    <div id="gallery-container" class="gallery-container">
+      <div class="edit-button-panel hide">
+        <button id="prev-img" class="btn btn-prev"><i class="fas fa-caret-left"></i>Select previous image</button>
+        <button id="delete-img" class="btn btn-del"><i class="fas fa-trash"></i>Delete image</button>
+        <button id="next-img" class="btn btn-next">Select next image<i class="fas fa-caret-right"></i></button>
+        <button id="move-img-left" class="btn btn-move-left"><i class="fas fa-arrows-alt"></i>Move image left</button>
+        <button id="move-img-right" class="btn btn-move-right">Move image right<i class="fas fa-arrows-alt"></i></button>
+      </div>
+      <div class="jgd-gallery gap16 img320 padding-24">
+
+      </div>
+    </div>
+
+    <div class="code-panel">
+      <h2 class="code-panel__title">HTML code:</h2>
+      <button class="btn select-html-btn"><i class="fas fa-copy"></i>Select HTML</button>
+      <pre id="html-box" class="code-panel__code">
+
+      </pre>
+      <h2 class="code-panel__title">CSS code:</h2>
+      <button class="btn select-css-btn"><i class="fas fa-copy"></i>Select CSS</button>
+      <pre id="css-box" class="code-panel__code">
+/* jgdGalleryMaker */
+
+.jgd-gallery {
+  display: grid;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.jgd-gallery figure {
+  margin: 0;
+}
+
+.jgd-gallery__image img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.padding-24 {
+  padding: 24px 0;
+}
+
+.padding-48 {
+  padding: 48px 0;
+}
+
+.padding-72 {
+  padding: 72px 0;
+}
+
+.padding-96 {
+  padding: 96px 0;
+}
+
+.gap8 {
+  grid-gap: 8px;
+}
+
+.gap16 {
+  grid-gap: 16px;
+}
+
+.gap24 {
+  grid-gap: 24px;
+}
+
+.gap32 {
+  grid-gap: 32px;
+}
+
+<span id="generated-css"></span>
+
+/* */
+</pre>
+    </div>
+
+    <div class="instructions off-screen-left">
+      <h2>How to use jgdGalleryMaker</h2>
+      <h3>Adding images</h3>
+      <ol>
+        <li>Enter an image url into the Image URL box with optional Alt text one a time</li>
+        <li>Click <strong>Add an image to the gallery</strong> to add each new image</li>
+      </ol>
+      <h3>Editing the gallery</h3>
+      <ol>
+        <li>Under <strong>Select Editing Mode</strong>, choose Edit Gallery</li>
+        <li>Each gallery image will be highlighted; images that are highlighted yellow can be deleted or moved</li>
+        <li>To delete an image, use the <strong>Select next image</strong> and <strong>Select previous image</strong> buttons and click <strong>Delete image</strong></li>
+        <li>To move an image, use the <strong>Move image left</strong> and <strong>Move image right</strong> buttons</li>
+      </ol>
+      <h3>Copying the code</h3>
+      <p>Just below the gallery, you can copy and paste the generated HTML and CSS to use in your projects.</p>
+      <ol>
+        <li>Click the <strong>Select HTML</strong> or <strong>Select CSS</strong> button to highlight the HTML or CSS text</li>
+        <li>Copy (Ctrl/Cmd C)</li>
+        <li>Paste (Ctrl/Cmd V) the HTML output into an HTML document</li>
+        <li>Paste the CSS into a CSS document</li>
+      </ol>
+      <p>jgdGalleryMaker only generates an HTML snippet to be used inside an existing web page.</p>
+      <h3>About Local Storage</h3>
+      <p>jgdGalleryMaker stores information to the brower's local storage. This information is used for the purposes of remembering a previously created gallery.</p>
+      <p>The information consists of the image URLs and stored settings, such as image sizes, etc.</p>
+      <p>Removing the gallery clears the local storage settings.</p>
+    </div>
+
+    <footer class="footer">
+      <!-- Cookie notice -->
+      <div class="cookie-banner hide">
+        <p class="cookie-banner__notice">jgdGalleryMaker uses cookies to store information and settings.<br>For more information, please browse our <a href="../privacy_policy.html" target="_blank">Privacy Policy</a> page.</p>
+        <button class="btn close-btn">Accept Cookies</button>
+      </div>
+      <!-- -->
+      <p class="copyright">Copyright &copy; 2020 Jason G. Designs</p>
+    </footer>
+
+  </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
