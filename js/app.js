@@ -120,7 +120,8 @@
 
 
   function getImgURL() {
-     let imgURL = document.getElementById("image_url").value;
+    let imgURL = document.getElementById("image_url").value;
+
     /* Use endsWith to find strings ending with typical image extensions;
      * assign each to variables
      */
@@ -212,7 +213,7 @@
     return galImgsArray;
   }
 
-  console.log(gallery.innerHTML);
+
   function addImgTile(arr) {
     /* Assign array result from createImgArray() to arr parameter */
     arr = createImgArray();
@@ -223,15 +224,32 @@
     /* Loop through each image and add HTML tags around them */
     for (let i = 0, len = arr.length; i < len; i++) {
       gallery.innerHTML += `\n  <figure class="jgd-gallery__image">
-      <a href="${arr[i].imgUrl}">
-        <img src="${arr[i].imgUrl}" alt="${arr[i].alt}" />
-      </a>
-    </figure>\n`;
+    <a href="${arr[i].imgUrl}">
+      <img src="${arr[i].imgUrl}" alt="${arr[i].alt}" />
+    </a>
+  </figure>\n`;
   }
 
     return gallery.innerHTML;
   }
   imgBtn.addEventListener('click', addImgTile);
+
+
+  function replaceEmptyImgs() {
+    let images = document.querySelectorAll(".jgd-gallery img");
+    let closestUrl;
+
+    for (let i = 0, len = images.length; i < len; i++) {
+
+      /* If any image has a width of 0 (does not exist)
+       * replace with a default image
+       */
+      if (images[i].naturalWidth === 0) {
+        images[i].setAttribute("src", "images/default-image.png");
+        closestUrl = images[i].closest("a").href;
+      }
+    }
+  }
 
 
   function resetFields() {
@@ -681,7 +699,9 @@
   function displayHTML() {
     let displayedHTML = document.getElementById("html-box");
     if (gallery.innerHTML !== '') {
-      let cleanedText = gallery.innerHTML.replace(/\s(is-highlighted|is-editable)/g, "");
+      let replacedImgUrl = gallery.innerHTML.replace(/(images\/default-image\.png)/gm, replaceEmptyImgs());
+      let cleanedText = replacedImgUrl.replace(/\s(is-highlighted|is-editable)/g, "");
+
       displayedHTML.innerText = '<div class="' + gallery.className + '">' + cleanedText + '</div>';
     }
   }
@@ -926,6 +946,7 @@
   window.addEventListener('load', function() {
     imgError.innerText = '';
     altError.innerText = '';
+    replaceEmptyImgs();
     displayHTML();
     displayCSS();
   });

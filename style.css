@@ -1,4 +1,5 @@
 /* Basic CSS/Reset/Shared CSS */
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ html {
 }
 
 body {
-  color: #fafafa;
+  color: #dedede;
   line-height: 1.5rem;
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
