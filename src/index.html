@@ -14,8 +14,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>jgdGalleryMaker - Make photo galleries online for free</title>
+  <meta name="description" content="Create an attractive HTML/CSS photo gallery from your online images.">
   <link rel="shortcut icon" href="../favicon-32.png" />
-  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/ca4bbd9bf7.js" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
   <div class="wrapper">
 
     <header id="header" class="header">
-      <div id="logo"><img src="images/jgm-logo-large.png" alt="jgdGalleryMaker logo">
+      <div id="logo"><img id="jgm-logo" src="images/jgm-logo-large.png" alt="jgdGalleryMaker logo">
         <h1 id="title" class="screen-reader">jgdGalleryMaker</h1>
       </div>
       <div class="header__panel">
@@ -60,12 +60,12 @@
       <div class="form-row">
         <div id="img-url-error"></div>
         <i class="fas fa-link"></i><label for="image_url">Image URL: </label>
-        <input type="url" id="image_url" name="image_url" class="img-input" placeholder="Enter a URL for your gallery image">
+        <input type="url" id="image_url" name="image_url" class="text-input" placeholder="Enter a URL for your gallery image">
       </div>
       <div class="form-row">
         <div id="alt-text-error" class="warning"></div>
         <i class="fas fa-closed-captioning"></i><label for="alt_text">Image Alt text: </label>
-        <input type="text" id="alt_text" name="alt_text" class="alt-input" placeholder="Add alt text for your image">
+        <input type="text" id="alt_text" name="alt_text" class="text-input" placeholder="Add alt text for your image">
       </div>
       <div class="form-row">
         <button type="submit" class="btn img-submit-btn"><i class="fas fa-image"></i>Add an image to the gallery</button>
@@ -192,11 +192,13 @@
 
     <div class="instructions off-screen-left">
       <h2>How to use jgdGalleryMaker</h2>
+      <hr>
       <h3>Adding images</h3>
       <ol>
         <li>Enter an image url into the Image URL box with optional Alt text one a time</li>
-        <li>Click <strong>Add an image to the gallery</strong> to add each new image</li>
+        <li>Click <strong>Add an image to the gallery</strong> to add each new image *</li>
       </ol>
+      <hr>
       <h3>Editing the gallery</h3>
       <ol>
         <li>Under <strong>Select Editing Mode</strong>, choose Edit Gallery</li>
@@ -204,6 +206,7 @@
         <li>To delete an image, use the <strong>Select next image</strong> and <strong>Select previous image</strong> buttons and click <strong>Delete image</strong></li>
         <li>To move an image, use the <strong>Move image left</strong> and <strong>Move image right</strong> buttons</li>
       </ol>
+      <hr>
       <h3>Copying the code</h3>
       <h4>Standard website</h4>
       <p>Just below the gallery, you can copy and paste the generated HTML and CSS to use in your projects.</p>
@@ -226,10 +229,13 @@
         <li><strong>Publish</strong> or <strong>Update</strong> the page</li>
       </ol>
       <p>jgdGalleryMaker only generates an HTML snippet to be used inside an existing web page.</p>
+      <hr>
       <h3>About Local Storage</h3>
       <p>jgdGalleryMaker stores information to the brower's local storage. This information is used for the purposes of remembering a previously created gallery.</p>
       <p>The information consists of the image URLs and stored settings, such as image sizes, etc.</p>
       <p>Removing the gallery clears the local storage settings.</p>
+      <hr>
+      <p>* It is highly advised to only include images that you have permission to use or images that you own in your gallery.</p>
     </div>
 
     <footer class="footer">
@@ -243,7 +249,5 @@
     </footer>
 
   </div>
-
-<script src="js/app.js"></script>
 </body>
 </html>
