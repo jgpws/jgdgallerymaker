@@ -1,4 +1,3 @@
-.ftpconfig
-.ftpignore
+.npmrc
 node_modules
 dist

@@ -1,5 +1,5 @@
 import * as globals from './global-vars.js';
-import { selectGalPadding, selectImgSize, selectGridGaps } from './image-options.js';
+import { selectGalPadding, selectImgSize, selectGridGaps, selectGalLayout } from './image-options.js';
 
 export function init() {
   let cookieBanner = document.querySelector(".cookie-banner");
@@ -13,7 +13,7 @@ export function init() {
   }
 
   cbCloseBtn.addEventListener('click', function() {
-    cookieBanner.classList.add("hideselectImgSize");
+    cookieBanner.classList.add("hide");
   });
 
   if (globals.galImgsArray.length === 0 || globals.galImgsArray === undefined) {
@@ -54,6 +54,13 @@ export function init() {
 
     /* Re-call selectGridGaps() function */
     selectGridGaps();
+  }
+
+  if (globals.galLayoutLocalVal) {
+    document.getElementById("layout-style").value = globals.galLayoutLocalVal;
+
+    /* Re-call selectGalLayout() function */
+    selectGalLayout();
   }
 
   /* Remove .error, .warning classes on load */

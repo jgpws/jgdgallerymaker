@@ -25,10 +25,11 @@ globals.moveLeftBtn.addEventListener('click', edit.moveImgLeft);
 globals.delBtn.addEventListener('click', edit.deleteImg);
 globals.removeBtn.addEventListener('click', edit.removeGallery);
 
-import { selectGalPadding, selectImgSize, selectGridGaps } from './js/image-options.js';
+import { selectGalPadding, selectImgSize, selectGridGaps, selectGalLayout } from './js/image-options.js';
 globals.galPadSelect.addEventListener('change', selectGalPadding);
 globals.imgSizeSelect.addEventListener('change', selectImgSize);
 globals.gridGapsSelect.addEventListener('change', selectGridGaps);
+globals.galLayoutSelect.addEventListener('change', selectGalLayout);
 
 import { storageAvailable, addToLocalStorage } from './js/local-storage.js';
 
@@ -41,8 +42,9 @@ globals.moveLeftBtn.addEventListener('click', displayHTML);
 globals.delBtn.addEventListener('click', displayHTML);
 globals.galPadSelect.addEventListener('change', displayHTML);
 globals.imgSizeSelect.addEventListener('change', displayHTML);
-globals.imgSizeSelect.addEventListener('change', displayCSS);
 globals.gridGapsSelect.addEventListener('change', displayHTML);
+globals.imgSizeSelect.addEventListener('change', displayCSS);
+globals.galLayoutSelect.addEventListener('change', displayCSS);
 globals.selectHTMLBtn.addEventListener('click', highlightHTMLFunc);
 globals.selectCSSBtn.addEventListener('click', highlightCSSFunc);
 
@@ -50,8 +52,8 @@ globals.selectCSSBtn.addEventListener('click', highlightCSSFunc);
 window.addEventListener('load', function() {
   globals.imgError.innerText = '';
   globals.altError.innerText = '';
-  replaceEmptyImgs();
   displayHTML();
   displayCSS();
+  replaceEmptyImgs();
 });
 window.addEventListener('DOMContentLoaded', init);

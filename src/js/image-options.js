@@ -84,4 +84,23 @@ function selectGridGaps() {
   return gridGapSelectVal;
 }
 
-export { selectGalPadding, selectImgSize, selectGridGaps };
+function selectGalLayout() {
+  let galLayoutSelectVal = document.getElementById("layout-style").value;
+
+  switch (galLayoutSelectVal) {
+    case 'vert-masonry':
+      gallery.classList.add("vert-masonry");
+      gallery.classList.remove("square");
+      break;
+    default:
+      gallery.classList.add("square");
+      gallery.classList.remove("vert-masonry");
+  }
+
+  /* Set returned value into local storage to recall on load */
+  localStorage.setItem('galLayout', galLayoutSelectVal);
+
+  return galLayoutSelectVal;
+}
+
+export { selectGalPadding, selectImgSize, selectGridGaps, selectGalLayout };

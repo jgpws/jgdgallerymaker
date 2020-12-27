@@ -42,9 +42,9 @@ function addImgTile(arr) {
 
   /* Loop through each image and add HTML tags around them */
   for (let i = 0, len = arr.length; i < len; i++) {
-    gallery.innerHTML += `\n  <figure class="jgd-gallery__image">
+    gallery.innerHTML += `\n  <figure class="jgd-gallery__image-tile">
     <a href="${arr[i].imgUrl}">
-      <img src="${arr[i].imgUrl}" alt="${arr[i].alt}" />
+      <img class="jgd-gallery__image" src="${arr[i].imgUrl}" alt="${arr[i].alt}" />
     </a>
   </figure>\n`;
 }
@@ -54,17 +54,15 @@ function addImgTile(arr) {
 
 
 function replaceEmptyImgs() {
-  let images = document.querySelectorAll(".jgd-gallery img");
-  let closestUrl;
+  let images = document.querySelectorAll(".jgd-gallery__image");
 
   for (let i = 0, len = images.length; i < len; i++) {
 
-    /* If any image has a width of 0 (does not exist)
+    /* If any image returns an error
      * replace with a default image
      */
-    if (images[i].naturalWidth === 0) {
+    images[i].onerror = function() {
       images[i].setAttribute("src", "images/default-image.png");
-      closestUrl = images[i].closest("a").href;
     }
   }
 }

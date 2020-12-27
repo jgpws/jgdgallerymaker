@@ -21,7 +21,7 @@
   <script src="https://kit.fontawesome.com/ca4bbd9bf7.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- version 1.1.1 -->
+<!-- version 1.2.1 -->
 
   <div class="wrapper">
 
@@ -57,6 +57,8 @@
       <div class="form-row form-row--goto">
         <a class="btn go-to-gallery" href="#gallery-container"><i class="fas fa-th"></i>Go to the gallery</a>
       </div>
+      <hr>
+      <h2 class="form-heading">Add Images</h2>
       <div class="form-row">
         <div id="img-url-error"></div>
         <i class="fas fa-link"></i><label for="image_url">Image URL: </label>
@@ -70,7 +72,7 @@
       <div class="form-row">
         <button type="submit" class="btn img-submit-btn"><i class="fas fa-image"></i>Add an image to the gallery</button>
       </div>
-      <hr>
+      <h2 class="form-heading">Gallery Options</h2>
       <div class="form-row form-row--select">
         <label for="gallery-padding">Gallery padding:</label>
         <select name="gallery-padding" autocomplete="off" id="gallery-padding">
@@ -81,12 +83,12 @@
         </select><i class="fas fa-chevron-down"></i>
       </div>
       <div class="form-row form-row--select">
-        <label for="image-size">Image maximum size:</label>
+        <label for="image-size">Image width:</label>
         <select name="image-size" autocomplete="off" id="image-size">
-          <option value="px-240">240 x 240 pixels</option>
-          <option value="px-320" selected>320 x 320 pixels</option>
-          <option value="px-560">560 x 560 pixels</option>
-          <option value="px-640">640 x 640 pixels</options>
+          <option value="px-240">240 pixels</option>
+          <option value="px-320" selected>320 pixels</option>
+          <option value="px-560">560 pixels</option>
+          <option value="px-640">640 pixels</options>
         </select><i class="fas fa-chevron-down"></i>
       </div>
       <div class="form-row form-row--select">
@@ -94,12 +96,19 @@
         <select name="grid-gaps" autocomplete="off" id="grid-gaps">
           <option value="zero">No Gaps</option>
           <option value="px-8">8 pixels</option>
-          <option value="px-16" selectedHTML>16 pixels</option>
+          <option value="px-16" selected>16 pixels</option>
           <option value="px-24">24 pixels</option>
           <option value="px-32">32 pixels</option>
         </select><i class="fas fa-chevron-down"></i>
       </div>
-      <hr>
+      <div class="form-row form-row--select">
+        <label for="layout-style">Gallery Layout:</label>
+        <select name="layout-style" autocomplete="off" id="layout-style">
+          <option value="square" selected>Square Tiles</option>
+          <option value="vert-masonry">Vertical Order Masonry</option>
+        </select><i class="fas fa-chevron-down"></i>
+      </div>
+      <h2 class="form-heading">Edit Gallery</h2>
       <div class="form-row form-row--select">
         <label for="gallery-mode">Select Editing Mode:</label>
         <select name="mode" autocomplete="off" id="gallery-mode">
@@ -120,12 +129,13 @@
         <button id="move-img-left" class="btn btn-move-left"><i class="fas fa-arrows-alt"></i>Move image left</button>
         <button id="move-img-right" class="btn btn-move-right">Move image right<i class="fas fa-arrows-alt"></i></button>
       </div>
-      <div class="jgd-gallery gap16 img320 padding-24">
+      <div class="jgd-gallery gap16 img320 padding-24 square">
 
       </div>
     </div>
 
     <div class="code-panel">
+      <hr>
       <h2 class="code-panel__title">HTML code:</h2>
       <button class="btn select-html-btn"><i class="fas fa-copy"></i>Select HTML</button>
       <pre id="html-box" class="code-panel__code">
@@ -137,16 +147,19 @@
 /* jgdGalleryMaker */
 
 .jgd-gallery {
+  margin: 0 auto;
+}
+
+.square.jgd-gallery {
   display: grid;
   justify-content: center;
-  margin: 0 auto;
 }
 
 .jgd-gallery figure {
   margin: 0;
 }
 
-.jgd-gallery__image img {
+.jgd-gallery__image {
   display: block;
   max-width: 100%;
   object-fit: cover;
@@ -168,22 +181,6 @@
   padding: 96px 0;
 }
 
-.gap8 {
-  grid-gap: 8px;
-}
-
-.gap16 {
-  grid-gap: 16px;
-}
-
-.gap24 {
-  grid-gap: 24px;
-}
-
-.gap32 {
-  grid-gap: 32px;
-}
-
 <span id="generated-css"></span>
 
 /* */
@@ -191,13 +188,26 @@
     </div>
 
     <div class="instructions off-screen-left">
-      <h2>How to use jgdGalleryMaker</h2>
-      <hr>
+      <h2 class="form-heading">How to use jgdGalleryMaker</h2>
       <h3>Adding images</h3>
       <ol>
         <li>Enter an image url into the Image URL box with optional Alt text one a time</li>
         <li>Click <strong>Add an image to the gallery</strong> to add each new image *</li>
       </ol>
+      <hr>
+      <h3>Gallery Options</h3>
+      <h4>Image Width</h4>
+      <p>Image widths are approximate and vary per each gallery style.</p>
+      <p>For instance, square galleries have an exact fixed width, while the Vertical Order Masonry gallery has a fluid width that becomes fixed when the parent container can fit the total number of columns.</p>
+      <h4>Gallery Layout</h4>
+      <p>The Gallery Options section features different styles for the gallery tiles.</p>
+      <ul>
+        <li><strong>Square-</strong> Basic, square shaped gallery tiles.</li>
+        <li>
+          <p><strong>Vertical Order Masonry- </strong> A masonry pattern with alternating heights, displaying images from top to bottom, left to right.</p>
+          <p>This style works best inside of a full width web page.</p>
+        </li>
+      </ul>
       <hr>
       <h3>Editing the gallery</h3>
       <ol>
@@ -235,7 +245,7 @@
       <p>The information consists of the image URLs and stored settings, such as image sizes, etc.</p>
       <p>Removing the gallery clears the local storage settings.</p>
       <hr>
-      <p>* It is highly advised to only include images that you have permission to use or images that you own in your gallery.</p>
+      <p>* It is highly advised to only add images to your gallery that you own or have permission to use.</p>
     </div>
 
     <footer class="footer">

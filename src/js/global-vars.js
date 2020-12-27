@@ -7,6 +7,7 @@ export let instructionsBtn = document.querySelector(".instructions-btn"),
     galPadSelect = document.getElementById("gallery-padding"),
     imgSizeSelect = document.getElementById("image-size"),
     gridGapsSelect = document.getElementById("grid-gaps"),
+    galLayoutSelect = document.getElementById("layout-style"),
     editSelect = document.getElementById("gallery-mode");
 
 // Edit buttons
@@ -40,6 +41,7 @@ export let galImgsArray = localStorage.getItem('imagesArray') ? JSON.parse(local
 export let galPaddingLocalVal = localStorage.getItem('galleryPadding') ? localStorage.getItem('galleryPadding') : 'pad-24';
 export let imgSizeLocalVal = localStorage.getItem('imageSize') ? localStorage.getItem('imageSize') : 'px-320';
 export let gridGapLocalVal = localStorage.getItem('gridGap') ? localStorage.getItem('gridGap') : 'px-16';
+export let galLayoutLocalVal = localStorage.getItem('galLayout') ? localStorage.getItem('galLayout') : 'square';
 
 /* Add images to the parent container .jgd-gallery */
 gallery.innerHTML = galImgsArray;

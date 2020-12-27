@@ -1,8 +1,8 @@
-import { removeBtn, nextBtn, prevBtn, moveLeftBtn, moveRightBtn, galImgsArray } from './global-vars.js';
+import { removeBtn, nextBtn, prevBtn, moveLeftBtn, moveRightBtn, editSelect, gallery, galImgsArray } from './global-vars.js';
 import { count } from './main.js';
 
 function editImgTile(evt) {
-  let imgTile = document.querySelectorAll(".jgd-gallery__image");
+  let imgTile = document.querySelectorAll(".jgd-gallery__image-tile");
   let editControls = document.querySelector('.edit-button-panel');
 
   for (let i = 0, len = imgTile.length; i < len; i++) {
@@ -38,6 +38,9 @@ function editImgTile(evt) {
         prevBtn.removeAttribute("disabled");
       }
 
+      /* Add display: inline-block to tiles */
+      imgTile[i].style.display = "inline-block";
+
     /* If "View Gallery" is chosen in select box */
     } else {
 
@@ -54,13 +57,16 @@ function editImgTile(evt) {
 
       /* Remove .is-deletable class from all elements */
       imgTile[i].classList.remove("is-editable");
+
+      /* Remove display: inline-block from tiles */
+      imgTile[i].style.display = "";
     }
   } // closes for loop
 }
 
 
 function selectNext() {
-  let imgTile = document.querySelectorAll(".jgd-gallery__image");
+  let imgTile = document.querySelectorAll(".jgd-gallery__image-tile");
   let listLength = imgTile.length - 1;
   let currentIndex = count.value();
 
@@ -91,7 +97,7 @@ function selectNext() {
 
 
 function selectPrev() {
-  let imgTile = document.querySelectorAll(".jgd-gallery__image");
+  let imgTile = document.querySelectorAll(".jgd-gallery__image-tile");
   let listLength = imgTile.length - 1;
   let currentIndex = count.value();
 
@@ -123,10 +129,10 @@ function selectPrev() {
 
 function moveImgRight() {
   //debugger;
-  let imgTile = document.querySelectorAll(".jgd-gallery__image");
+  let imgTile = document.querySelectorAll(".jgd-gallery__image-tile");
   let listLength = imgTile.length - 1;
   let currentIndex = count.value() - 1;
-  let imgAnchor = document.querySelectorAll(".jgd-gallery__image a");
+  let imgAnchor = document.querySelectorAll(".jgd-gallery__image-tile a");
 
   /* Increment count function */
   count.countUp();
@@ -177,9 +183,9 @@ function moveImgRight() {
 
 function moveImgLeft() {
   //debugger;
-  let imgTile = document.querySelectorAll(".jgd-gallery__image");
+  let imgTile = document.querySelectorAll(".jgd-gallery__image-tile");
   let currentIndex = count.value();
-  let imgAnchor = document.querySelectorAll(".jgd-gallery__image a");
+  let imgAnchor = document.querySelectorAll(".jgd-gallery__image-tile a");
 
   /* Decrement count function */
   count.countDown();
@@ -227,7 +233,7 @@ function moveImgLeft() {
 
 
 function deleteImg() {
-  let imgTile = document.querySelectorAll(".jgd-gallery__image");
+  let imgTile = document.querySelectorAll(".jgd-gallery__image-tile");
   let currentIndex = count.value() - 1;
 
   /* Set the current index to 0 if it is one below the first (undefined) */
@@ -236,7 +242,7 @@ function deleteImg() {
   }
 
   let currentTile = imgTile[currentIndex];
-  let imgAnchor = document.querySelectorAll(".jgd-gallery__image a");
+  let imgAnchor = document.querySelectorAll(".jgd-gallery__image-tile a");
 
   /* Remove node */
   if (currentTile !== undefined) {
@@ -260,16 +266,14 @@ function deleteImg() {
 
 function removeGallery() {
   /* Remove the gallery, including removing the local storage references */
-  removeBtn.addEventListener('click', function() {
-    localStorage.removeItem('galleryPadding');
-    localStorage.removeItem('imagesArray');
-    localStorage.removeItem('gridGap');
-    localStorage.removeItem('imageSize');
-    while (gallery.innerHTML = '') {
-      gallery.innerHTML = '';
-    }
-    editSelect.setAttribute("disabled", "");
-  });
+  localStorage.removeItem('galleryPadding');
+  localStorage.removeItem('imagesArray');
+  localStorage.removeItem('gridGap');
+  localStorage.removeItem('imageSize');
+  while (gallery.innerHTML = '') {
+    gallery.innerHTML = '';
+  }
+  editSelect.setAttribute("disabled", "");
 }
 
 export { editImgTile, selectNext, selectPrev, moveImgRight, moveImgLeft, deleteImg, removeGallery };

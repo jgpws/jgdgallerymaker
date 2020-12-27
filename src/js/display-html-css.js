@@ -1,6 +1,6 @@
 import { gallery } from './global-vars.js';
 import { replaceEmptyImgs } from './create-images.js';
-import { img240CSS, img320CSS, img560CSS, img640CSS } from './image-css-text.js';
+import * as cssText from './image-css-text.js';
 
 function displayHTML() {
   let displayedHTML = document.getElementById("html-box");
@@ -15,28 +15,49 @@ function displayHTML() {
 
 function displayCSS() {
   let displayedCSS = document.getElementById("generated-css");
+  let imgGalLayoutVal = document.getElementById("layout-style").value;
   let imgSizeSelectVal = document.getElementById("image-size").value;
 
   // This area will display dynamically generated CSS
-
-  switch (imgSizeSelectVal) {
-    case 'px-240':
-      displayedCSS.innerHTML = '';
-      displayedCSS.innerHTML += img240CSS;
-      break;
-    case 'px-560':
-    displayedCSS.innerHTML = '';
-      displayedCSS.innerText += img560CSS;
-      break;
-    case 'px-640':
-      displayedCSS.innerHTML = '';
-      displayedCSS.innerHTML += img640CSS;
-      break;
-    default:
-      displayedCSS.innerHTML = '';
-      displayedCSS.innerHTML += img320CSS;
-      break;
+  if (imgGalLayoutVal === 'square') {
+    switch (imgSizeSelectVal) {
+      case 'px-240':
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerHTML += cssText.img240CSS;
+        break;
+      case 'px-560':
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerText += cssText.img560CSS;
+        break;
+      case 'px-640':
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerHTML += cssText.img640CSS;
+        break;
+      default:
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerHTML += cssText.img320CSS;
+        break;
+    }
+  } else if (imgGalLayoutVal === 'vert-masonry') {
+    switch (imgSizeSelectVal) {
+      case 'px-240':
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerHTML += cssText.vertCol240CSS;
+        break;
+      case 'px-560':
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerHTML += cssText.vertCol560CSS;
+        break;
+      case 'px-640':
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerHTML += cssText.vertCol640CSS;
+        break;
+      default:
+        displayedCSS.innerHTML = '';
+        displayedCSS.innerHTML += cssText.vertCol320CSS;
+    }
   }
+  return imgSizeSelectVal;
 }
 
 
