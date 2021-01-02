@@ -1,0 +1,110 @@
+:root {
+  --text-color: #dedede;
+  --text-color-dark: #333333;
+  --text-highlight-color: #fefefe;
+  --link-color: rgb(192, 192, 255);
+  --link-color-dark: rgb(0, 0, 192);
+  --base-color: rgb(192, 192, 204);
+  --primary-color: rgb(64, 64, 80);
+  --primary-color-dark: rgb(48, 48, 64);
+  --primary-color-darker: rgb(32, 32, 48);
+  --success: rgb(0, 192, 0);
+  --warning: rgb(255, 192, 64);
+  --danger: rgb(255, 64, 64);
+  --light-gray: #fafafa;
+
+  --box-shadow-large-bottom: 0px 8px 5px 0 rgba(0, 0, 0, 0.25);
+  --box-shadow-large-top: 0px -8px 5px 0 rgba(255, 255, 255, 0.12);
+  --box-shadow-large-right: 8px 8px 5px 0 rgba(0, 0, 0, 0.25);
+  --box-shadow-large-left: -4px -4px 10px 0 rgba(255, 255, 255, 0.12);
+  --box-shadow-outset: 2px 2px 5px 0 rgba(0, 0, 0, 0.4),
+   -2px -2px 5px 0 rgba(255, 255, 255, 0.25);
+  --box-shadow-inset: -2px -2px 5px 0 rgba(255, 255, 255, 0.25) inset,
+    2px 2px 5px 0 rgba(0, 0, 0, 0.4) inset;
+  --box-shadow-inset-dark: -2px -2px 5px 0 rgba(255, 255, 255, 0.4) inset,
+    2px 2px 5px 0 rgba(0, 0, 0, 0.4) inset;
+  --box-shadow-inset-small: -1px -1px 3px 0 rgba(255, 255, 255, 0.4) inset,
+    1px 1px 3px 0 rgba(0, 0, 0, 0.4) inset;
+  --box-shadow-inside-small: 1px 1px 3px 0 rgba(255, 255, 255, 0.4) inset,
+   -1px -1px 3px 0 rgba(0, 0, 0, 0.4) inset;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text-color);
+  line-height: 1.5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+
+a,
+a:visited {
+  color: var(--link-color);
+}
+
+h1, h2, h3, h4, h5 {
+  margin-bottom: 1rem;
+}
+
+p, ol, ul {
+  margin-bottom: 1rem;
+}
+
+ol, ul {
+  margin-left: 1em;
+}
+
+pre {
+  font-family: 'Fira Mono', monospace;
+  overflow: auto;
+}
+
+.btn,
+input,
+select {
+  border: transparent;
+  border-radius: 1em;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0.5em 1em;
+}
+
+.btn,
+select {
+  background-color: transparent;
+  box-shadow: var(--box-shadow-outset);
+  color: var(--text-highlight-color);
+}
+
+select:focus,
+.btn:active {
+  box-shadow: var(--box-shadow-inset);
+}
+
+select:disabled,
+.btn:disabled {
+  box-shadow: var(--box-shadow-outset);
+  opacity: 0.5;
+}
+
+.text-input {
+  box-shadow: var(--box-shadow-inset-dark);
+  background-color: var(--base-color);
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+select option {
+  color: var(--text-color-dark);
+}
+
+hr {
+  border: 1px inset rgba(255, 255, 255, 0.25);
+  margin: 2em auto;
+  width: 75%;
+}

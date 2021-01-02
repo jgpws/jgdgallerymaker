@@ -25,6 +25,10 @@ export let copyCSS = document.getElementById("css-box");
 export let imgError = document.getElementById("img-url-error"),
     altError = document.getElementById("alt-text-error");
 
+// Cookie notice
+export let cookieBanner = document.querySelector(".cookie-banner");
+export let cbCloseBtn = document.querySelector(".close-btn");
+
 // Select values
 export let editSelectVal = document.getElementById("gallery-mode").value;
 

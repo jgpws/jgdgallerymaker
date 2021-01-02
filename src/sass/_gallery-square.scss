@@ -1,0 +1,172 @@
+/* Default layout - square */
+.square {
+  &.jgd-gallery {
+    display: grid;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 240px;
+  }
+
+  &.gap8 {
+    grid-gap: 8px;
+  }
+
+  &.gap16 {
+    grid-gap: 16px;
+  }
+
+  &.gap24 {
+    grid-gap: 24px;
+  }
+
+  &.gap32 {
+    grid-gap: 32px;
+  }
+
+  &.img240,
+  &.img320,
+  &.img560,
+  &.img640 {
+    grid-template-columns: repeat(auto-fit, 240px);
+    max-width: 240px;
+  }
+
+  .jgd-gallery__image {
+    height: 240px;
+    width: 240px;
+  }
+}
+
+@media (min-width: 768px) {
+  .square {
+    &.img240 {
+      max-width: 480px;
+
+      &.gap8 {
+        max-width: 488px;
+      }
+
+      &.gap16 {
+        max-width: 496px;
+      }
+
+      &.gap24 {
+        max-width: 504px;
+      }
+
+      &.gap32 {
+        max-width: 512px;
+      }
+    }
+
+    &.img320 {
+      grid-template-columns: repeat(auto-fit, 320px);
+      max-width: 640px;
+
+      .jgd-gallery__image {
+        height: 320px;
+        width: 320px;
+      }
+
+      &.gap8 {
+        max-width: 648px;
+      }
+
+      &.gap16 {
+        max-width: 656px;
+      }
+
+      &.gap24 {
+        max-width: 664px;
+      }
+
+      &.gap32 {
+        max-width: 672px;
+      }
+    }
+
+    &.img560 {
+      grid-template-columns: repeat(auto-fit, 560px);
+      max-width: 560px;
+
+      .jgd-gallery__image {
+        height: 560px;
+        width: 560px;
+      }
+    }
+
+    &.img640 {
+      grid-template-columns: repeat(auto-fit, 640px);
+      max-width: 640px;
+
+      .jgd-gallery__image {
+        height: 640px;
+        width: 640px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1366px) {
+  .square {
+    &.img240 {
+      max-width: 960px;
+
+      &.gap8 {
+        max-width: 984px;
+      }
+
+      &.gap16 {
+        max-width: 1008px;
+      }
+
+      &.gap24 {
+        max-width: 1032px;
+      }
+
+      &.gap32 {
+        max-width: 1056px;
+      }
+    }
+
+    &.img320 {
+      max-width: 960px;
+
+      &.gap8 {
+        max-width: 976px;
+      }
+
+      &.gap16 {
+        max-width: 992px;
+      }
+
+      &.gap24 {
+        max-width: 1008px;
+      }
+
+      &.gap32 {
+        max-width: 1024px;
+      }
+    }
+
+    &.img560 {
+      max-width: 1120px;
+
+      &.gap8 {
+        max-width: 1128px;
+      }
+
+      &.gap16 {
+        max-width: 1136px;
+      }
+
+      &.gap24 {
+        max-width: 1144px;
+      }
+
+      &.gap32 {
+        max-width: 1152px;
+      }
+    }
+  }
+}

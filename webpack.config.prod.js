@@ -10,10 +10,12 @@ module.exports = merge(commonConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.s?css$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
+          'sass-loader'
         ],
       },
     ],

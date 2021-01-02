@@ -2,19 +2,14 @@ import * as globals from './global-vars.js';
 import { selectGalPadding, selectImgSize, selectGridGaps, selectGalLayout } from './image-options.js';
 
 export function init() {
-  let cookieBanner = document.querySelector(".cookie-banner");
-  let cbCloseBtn = document.querySelector(".close-btn");
   /* Set the interface on load */
 
   /* Set cookie notice only once */
   if (localStorage.getItem('cookieSeen') !== 'shown') {
-    cookieBanner.classList.remove("hide");
-    localStorage.setItem('cookieSeen', 'shown');
+    globals.cookieBanner.classList.remove("hide");
+  } else {
+    globals.cookieBanner.classList.add("hide");
   }
-
-  cbCloseBtn.addEventListener('click', function() {
-    cookieBanner.classList.add("hide");
-  });
 
   if (globals.galImgsArray.length === 0 || globals.galImgsArray === undefined) {
     globals.gallery.innerHTML = globals.imgsPlaceholder;

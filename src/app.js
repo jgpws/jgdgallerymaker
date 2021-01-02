@@ -1,5 +1,6 @@
 /* jgdGalleryMaker JavaScript file */
-import '../style.css';
+//import '../style.css';
+import '/src/sass/style.scss';
 import logo from '../images/jgm-logo-large.png';
 import defaultGalImg from '../images/default-image.png';
 
@@ -33,7 +34,7 @@ globals.galLayoutSelect.addEventListener('change', selectGalLayout);
 
 import { storageAvailable, addToLocalStorage } from './js/local-storage.js';
 
-import { img240CSS, img320CSS, img560CSS, img640CSS } from './js/image-css-text.js';
+import { img240CSS, img320CSS, img560CSS, img640CSS, vertCol240CSS, vertCol320CSS, vertCol560CSS, vertCol640CSS } from './js/image-css-text.js';
 
 import { displayHTML, displayCSS, highlightHTMLFunc, highlightCSSFunc } from './js/display-html-css.js';
 globals.imgBtn.addEventListener('click', displayHTML);
@@ -43,10 +44,16 @@ globals.delBtn.addEventListener('click', displayHTML);
 globals.galPadSelect.addEventListener('change', displayHTML);
 globals.imgSizeSelect.addEventListener('change', displayHTML);
 globals.gridGapsSelect.addEventListener('change', displayHTML);
+globals.galLayoutSelect.addEventListener('change', displayHTML);
 globals.imgSizeSelect.addEventListener('change', displayCSS);
 globals.galLayoutSelect.addEventListener('change', displayCSS);
 globals.selectHTMLBtn.addEventListener('click', highlightHTMLFunc);
 globals.selectCSSBtn.addEventListener('click', highlightCSSFunc);
+
+globals.cbCloseBtn.addEventListener('click', function() {
+  globals.cookieBanner.classList.add("hide");
+  localStorage.setItem('cookieSeen', 'shown');
+});
 
 /* Page load event listeners */
 window.addEventListener('load', function() {
